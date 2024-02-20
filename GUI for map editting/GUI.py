@@ -14,17 +14,18 @@ canvas.pack()
 #Open the image
 image = Image.open("/home/phuoc/dev_ws/src/my_bot/maps/map.pgm")
 image.save("/home/phuoc/dev_ws/src/my_bot/maps/backup_map.pgm")
+image = image.resize((image.width * 5, image.height * 5))
 photo = ImageTk.PhotoImage(image)
 canvas.create_image(0,0,anchor="nw", image=photo)
 
 #Open BK logo
-bk_logo = Image.open("/home/phuoc/Documents/Programming/Python/GUI for map editting/bk_logo.png")
+bk_logo = Image.open("/home/phuoc/dev_ws/src/my_bot/GUI for map editting/bk_logo.png")
 bk_logo = bk_logo.resize((bk_logo.width // 2, bk_logo.height // 2))
 bk_logo_photo = ImageTk.PhotoImage(bk_logo)
 canvas.create_image(1600-30,1000,anchor="se", image=bk_logo_photo)
 
 #Open BKIC logo
-bkic_logo = Image.open("/home/phuoc/Documents/Programming/Python/GUI for map editting/bkic_logo.png")
+bkic_logo = Image.open("/home/phuoc/dev_ws/src/my_bot/GUI for map editting/bkic_logo.png")
 bkic_logo = bkic_logo.resize((bkic_logo.width // 3, bkic_logo.height // 3))
 bkic_logo_photo = ImageTk.PhotoImage(bkic_logo)
 canvas.create_image(1600-bk_logo.width-30,990,anchor="se", image=bkic_logo_photo)
@@ -60,6 +61,7 @@ def update_image():
 def open_original_image():
     global image, photo
     image = Image.open("/home/phuoc/dev_ws/src/my_bot/maps/backup_map.pgm")
+    image = image.resize((image.width * 5, image.height * 5))
     photo = ImageTk.PhotoImage(image)
     canvas.create_image(0, 0, anchor="nw", image=photo)
     line_history.clear()  # Clear line history for the new image
@@ -71,6 +73,8 @@ def undo_line():
         draw.line(last_line, fill="white", width=2)
         update_image()
 def save_image():
+    global image
+    image = image.resize((image.width // 5, image.height // 5))
     image.save("/home/phuoc/dev_ws/src/my_bot/maps/map.pgm")
 canvas.bind("<Button-1>", handle_click)
 
