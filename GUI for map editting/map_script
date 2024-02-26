@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+cd ~/dev_ws
+source install/setup.bash
+ros2 launch my_bot map.launch.py
