@@ -45,7 +45,7 @@ def handle_click(event):
 def draw_line():
     if start_point and end_point:
         draw = ImageDraw.Draw(image)
-        draw.line([start_point, end_point], fill="black", width=2)  # Adjust width as needed
+        draw.line([start_point, end_point], fill="black", width=5)  # Adjust width as needed
         update_image()
         line_history.append((start_point, end_point))  # Add line to history for undo
 def reset_points():

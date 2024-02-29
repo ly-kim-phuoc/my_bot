@@ -1,2 +1,3 @@
 #!/usr/bin/bash
+cd ~/dev_ws
 ros2 launch nav2_bringup localization_launch.py map:=./src/my_bot/maps/map.yaml use_sim_time:=true
