@@ -36,7 +36,13 @@ def generate_launch_description():
                         arguments=['-topic', 'robot_description',
                                    '-entity', 'my_bot'],
                         output='screen')
- 
+    twist_mux_params = os.path.join(get_package_share_directory(package_name),'config','twist_mux.yaml')
+    twist_mux = Node(
+            package="twist_mux",
+            executable="twist_mux",
+            parameters=[twist_mux_params, {'use_sim_time': True}],
+            remappings=[('/cmd_vel_out','/diff_cont/cmd_vel_unstamped')]
+        )
     diff_drive_spawner = Node(
         package="controller_manager",
         executable="spawner",
@@ -55,5 +61,6 @@ def generate_launch_description():
         gazebo,
         spawn_entity,
         diff_drive_spawner,
+        twist_mux,
         joint_broad_spawner
     ])
