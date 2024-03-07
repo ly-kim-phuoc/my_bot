@@ -41,7 +41,7 @@ def cell_decomposition(grid_map):
   visited = [[False for _ in row] for row in grid_map]  # Track visited cells
 
   for y in range(0,len(grid_map),12):
-    for x in range(0,len(grid_map[0]),6):
+    for x in range(0,len(grid_map[0]),1):
       if not visited[y][x] and grid_map[y][x] == 0:
         cell = []
         dfs_stack = [(y, x)]
@@ -52,7 +52,7 @@ def cell_decomposition(grid_map):
             visited[y][x] = True
 
           # Explore neighbors in a DFS-like manner (iterative)
-          for dy, dx in [(-12, 0), (12, 0), (0, -6), (0, 6)]:
+          for dy, dx in [(-12, 0), (12, 0), (0, -1), (0, 1)]:
             new_y, new_x = y + dy, x + dx
             if (new_y >= 0 and new_y < len(grid_map) and
                 new_x >= 0 and new_x < len(grid_map[0]) and
