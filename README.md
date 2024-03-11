@@ -13,3 +13,16 @@
 * gazebo -s libgazebo_ros_init.so -s libgazebo_ros_factory.so myworld.world : open gazebo
 * ros2 launch my_bot rsp.launch.py use_sim_time:=true : publish bot
 * ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity robot_name : spawn bot to gazebo
+
+### Wiring :
+Left wheel :
+* In 1 - D6
+* In 2 - D10
+* C1 - D3
+* C2 - D2
+
+Right wheel :
+* In 3 - D9
+* In 4 - D5
+* C1 - A4
+* C2 - A5
