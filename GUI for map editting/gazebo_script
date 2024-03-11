@@ -1,5 +1,0 @@
-#!/usr/bin/bash
-cd ~/dev_ws
-source install/setup.bash
-rviz2 &
-ros2 launch my_bot launch_sim.launch.py world:=/home/phuoc/dev_ws/worlds/room.world use_sim_time:=true
