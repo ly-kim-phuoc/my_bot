@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+cd ~/bot_ws
+source install/setup.bash
+ros2 launch my_bot localization_launch.py map:=./src/my_bot/maps/map.yaml use_sim_time:=false

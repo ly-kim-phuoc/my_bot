@@ -63,7 +63,7 @@ class UltrasonicHCSR04(object):
 
             # multiply with speed of sound (34300 cm/s)
             # and divide by 2 because there and back
-            distance = (duration * 3430) / 2
+            distance = (duration * 343) / 2
 
             if distance >= 0:
                 return distance

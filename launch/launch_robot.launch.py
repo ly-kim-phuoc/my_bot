@@ -70,29 +70,22 @@ def generate_launch_description():
         )
     )
 
+    hcsr04 = Node(
+        package="hcsr04",
+        executable="hcsr04_node"
+    )
 
-    # Code for delaying a node (I haven't tested how effective it is)
-    # 
-    # First add the below lines to imports
-    # from launch.actions import RegisterEventHandler
-    # from launch.event_handlers import OnProcessExit
-    #
-    # Then add the following below the current diff_drive_spawner
-    # delayed_diff_drive_spawner = RegisterEventHandler(
-    #     event_handler=OnProcessExit(
-    #         target_action=spawn_entity,
-    #         on_exit=[diff_drive_spawner],
-    #     )
-    # )
-    #
-    # Replace the diff_drive_spawner in the final return with delayed_diff_drive_spawner
-
-
+    lidar = Node(
+        package="xv11_lidar_python",
+        executable="xv11_lidar"
+    )
 
     # Launch them all!
     return LaunchDescription([
         rsp,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
-        delayed_joint_broad_spawner
+        delayed_joint_broad_spawner,
+        hcsr04,
+        lidar,
     ])
